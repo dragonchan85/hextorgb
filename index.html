@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9288770962100185"
+    crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HEX ↔ RGB 색상 코드 변환기를 제공합니다. 사용자는 HEX와 RGB 사이에서 색상 코드를 쉽게 변환할 수 있습니다. 웹 디자인, 그래픽 디자인, 색상 관리에 유용하게 활용하세요. 모바일 최적화 및 구글 애드센스 광고 포함.">
+  <title>HEX ↔ RGB 색상 코드 변환기</title>
+  <meta name="naver-site-verification" content="b366dbb6459aafa1c91f8f26b783724b86199d71" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 1em;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 0.8em;
+      margin: 10px 0;
+      font-size: 1em;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .result {
+      text-align: center;
+      font-size: 1.2em;
+      margin-top: 1em;
+      color: #2ecc71;
+    }
+    .ads {
+      margin-top: 2em;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 1em;
+      }
+      input, button {
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>HEX ↔ RGB 색상 코드 변환기</h1>
+  <div class="container">
+    <h2>HEX → RGB 변환</h2>
+    <input type="text" id="hexInput" placeholder="HEX 색상 코드 입력 (예: #FF5733)">
+    <button onclick="convertHexToRgb()">변환</button>
+
+    <div class="result" id="rgbResult"></div>
+
+    <h2>RGB → HEX 변환</h2>
+    <input type="text" id="rgbInput" placeholder="RGB 색상 코드 입력 (예: 255, 87, 51)">
+    <button onclick="convertRgbToHex()">변환</button>
+
+    <div class="result" id="hexResult"></div>
+  </div>
+
+  <!-- 애드센스 광고 영역 -->
+  <div class="ads">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9288770962100185"
+            crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-9288770962100185"
+        data-ad-slot="6399153707"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <script>
+    function convertHexToRgb() {
+      let hex = document.getElementById("hexInput").value;
+      // Remove # if it exists
+      if (hex.startsWith("#")) {
+        hex = hex.substring(1);
+      }
+      // Validate HEX input
+      if (!/^([0-9A-F]{3}){1,2}$/i.test(hex)) {
+        document.getElementById("rgbResult").innerHTML = "유효한 HEX 색상 코드를 입력하세요.";
+        return;
+      }
+
+      if (hex.length === 3) {
+        hex = hex.split("").map(function (char) {
+          return char + char;
+        }).join("");
+      }
+
+      let r = parseInt(hex.slice(0, 2), 16);
+      let g = parseInt(hex.slice(2, 4), 16);
+      let b = parseInt(hex.slice(4, 6), 16);
+
+      document.getElementById("rgbResult").innerHTML = `RGB: (${r}, ${g}, ${b})`;
+    }
+
+    function convertRgbToHex() {
+      let rgb = document.getElementById("rgbInput").value;
+      let rgbArray = rgb.split(",").map(function (val) {
+        return parseInt(val.trim(), 10);
+      });
+
+      // Validate RGB input
+      if (rgbArray.length !== 3 || rgbArray.some(function (val) {
+        return isNaN(val) || val < 0 || val > 255;
+      })) {
+        document.getElementById("hexResult").innerHTML = "유효한 RGB 색상 코드를 입력하세요.";
+        return;
+      }
+
+      let hex = rgbArray.map(function (val) {
+        return val.toString(16).padStart(2, '0');
+      }).join("");
+
+      document.getElementById("hexResult").innerHTML = `#${hex.toUpperCase()}`;
+    }
+  </script>
+
+</body>
+</html>

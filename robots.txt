@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /private/
+Allow: /
+
+Sitemap: https://dragonchan85.github.io/hextorgb/sitemap.xml
