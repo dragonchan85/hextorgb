@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /private/
 Allow: /
 
-Sitemap: https://dragonchan85.github.io/hextorgb/sitemap.xml
+Sitemap: https://hextorgb.yesnomark.com/sitemap.xml
